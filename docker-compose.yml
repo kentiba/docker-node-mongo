@@ -1,15 +1,18 @@
-version: '3'
+version: "3.7"
 services:
-  app:
-    container_name: docker-node-mongo
+  server:
+    container_name: docker_node_mongo
     restart: always
+    #. here means find the docker image in the same folder and build from it
     build: .
     ports:
-      - '80:3000'
+      - "80:3000"
+    # we link our app to mongo container
     links:
       - mongo
   mongo:
     container_name: mongo
+    # we are pulling the image form docker hub
     image: mongo
     ports:
-      - '27017:27017'
+      - "27017:27017"
